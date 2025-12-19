@@ -184,7 +184,7 @@ export class EmailService {
 <body>
   <div class="container">
     <div class="header">
-      <h1>🎮 NiteNite</h1>
+      <h1>NiteNite</h1>
       <h2>Order Confirmation</h2>
       <p>Thank you for your order, ${customerName}!</p>
     </div>
@@ -247,7 +247,7 @@ export class EmailService {
     const items = order.items || [];
 
     return `
-🎮 NiteNite - Order Confirmation
+NiteNite - Order Confirmation
 
 Hi ${customerName},
 
@@ -301,16 +301,16 @@ Questions? Reply to this email or contact support.
 <body>
   <div class="container">
     <div class="header">
-      <h1>🎮 NiteNite</h1>
-      <h2>📦 Your Order Has Shipped!</h2>
-      <p>Great news, ${customerName}!</p>
+      <h1>NiteNite</h1>
+      <h2>Your Order Has Shipped!</h2>
+      <p>Your order has been shipped, ${customerName}.</p>
     </div>
 
     <div class="content">
       <p>Your order <strong>${order.order_number}</strong> has been shipped and is on its way to you!</p>
 
       <div class="tracking-box">
-        <h3>📍 Tracking Information</h3>
+        <h3>Tracking Information</h3>
         <p><strong>Carrier:</strong> ${trackingInfo?.carrier}</p>
         <p><strong>Tracking Number:</strong> ${trackingInfo?.trackingNumber}</p>
         ${trackingInfo?.trackingUrl ? `<a href="${trackingInfo.trackingUrl}" class="button">Track Your Package</a>` : ''}
@@ -347,13 +347,13 @@ Questions? Reply to this email or contact support.
     const { order, customerName, trackingInfo } = data;
 
     return `
-🎮 NiteNite - Your Order Has Shipped!
+NiteNite - Your Order Has Shipped!
 
 Hi ${customerName},
 
-Great news! Your order ${order.order_number} has been shipped and is on its way to you!
+Your order ${order.order_number} has been shipped and is on its way to you.
 
-📍 Tracking Information:
+Tracking Information:
 Carrier: ${trackingInfo?.carrier}
 Tracking Number: ${trackingInfo?.trackingNumber}
 ${trackingInfo?.trackingUrl ? `Track at: ${trackingInfo.trackingUrl}` : ''}
@@ -398,14 +398,14 @@ Questions? Reply to this email or contact support.
 <body>
   <div class="container">
     <div class="header">
-      <h1>🎮 NiteNite</h1>
-      <h2>✅ Delivered!</h2>
+      <h1>NiteNite</h1>
+      <h2>Delivered!</h2>
       <p>Your order has arrived, ${customerName}!</p>
     </div>
 
     <div class="content">
       <div class="success-box">
-        <h3>🎉 Order Delivered Successfully!</h3>
+        <h3>Order Delivered Successfully!</h3>
         <p>Your order <strong>${order.order_number}</strong> has been delivered!</p>
       </div>
 
@@ -434,11 +434,11 @@ Questions? Reply to this email or contact support.
     const { order, customerName } = data;
 
     return `
-🎮 NiteNite - Order Delivered!
+NiteNite - Order Delivered!
 
 Hi ${customerName},
 
-🎉 Great news! Your order ${order.order_number} has been delivered!
+Your order ${order.order_number} has been delivered.
 
 We hope you enjoy your NiteNite products! If you have any issues with your order, please don't hesitate to reach out to our support team.
 
@@ -475,7 +475,7 @@ Questions? Reply to this email or contact support.
 <body>
   <div class="container">
     <div class="header">
-      <h1>🎮 NiteNite</h1>
+      <h1>NiteNite</h1>
       <h2>Order Cancelled</h2>
       <p>Hi ${customerName}</p>
     </div>
@@ -511,7 +511,7 @@ Questions? Reply to this email or contact support.
     const { order, customerName, orderTotal } = data;
 
     return `
-🎮 NiteNite - Order Cancelled
+NiteNite - Order Cancelled
 
 Hi ${customerName},
 

@@ -1,12 +1,15 @@
 {
   "expo": {
-    "name": "nite-putter",
+    "name": "NitePutter",
     "slug": "nite-putter",
+    "description": "Premium LED golf cup control and night golf experience management",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
+    "privacy": "public",
+    "primaryColor": "#00FF88",
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",

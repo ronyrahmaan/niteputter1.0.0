@@ -40,9 +40,6 @@ yarn-error.*
 /ios
 /android
 
-# Exclude specific folder as requested
-niteputter-pro-main 3/
-
 # Environment files
 .env
 *.env

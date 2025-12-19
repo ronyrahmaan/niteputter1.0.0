@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useRef } from 'react';
 import {
   View,
   StyleSheet,
-  Platform,
 } from 'react-native';
 import Animated, {
   useAnimatedStyle,

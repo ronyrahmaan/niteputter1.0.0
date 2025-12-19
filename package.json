@@ -1,12 +1,39 @@
 {
   "name": "nite-putter",
   "version": "1.0.0",
+  "description": "Premium React Native application for controlling LED golf cups and managing night golf experiences",
   "main": "index.ts",
+  "keywords": [
+    "react-native",
+    "expo",
+    "golf",
+    "led",
+    "bluetooth",
+    "mobile",
+    "typescript",
+    "e-commerce"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/niteputterappv6.git"
+  },
+  "license": "MIT",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
+    "lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx --fix",
+    "typecheck": "tsc --noEmit",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "build:ios": "expo build:ios --release-channel production",
+    "build:android": "expo build:android --release-channel production",
+    "build:web": "expo build:web",
+    "preview": "expo publish --release-channel preview",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.2",
@@ -63,6 +90,21 @@
     "prettier": "^3.6.2",
     "react-test-renderer": "19.1.0",
     "typescript": "~5.9.2"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run typecheck && npm test"
+    }
   },
   "private": true
 }

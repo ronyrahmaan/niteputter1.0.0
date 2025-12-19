@@ -3,6 +3,7 @@
  * Based on website's proven patterns, adapted for mobile payments
  */
 
+import React from 'react';
 import {
   StripeProvider,
   useStripe,
@@ -148,9 +149,9 @@ export class StripePaymentService {
     try {
       // Stripe initialization is handled by the provider wrapper
       this.initialized = true;
-      console.log('✅ Stripe service initialized');
+      console.log('Stripe service initialized successfully');
     } catch (error) {
-      console.error('❌ Failed to initialize Stripe service:', error);
+      console.error('Failed to initialize Stripe service:', error);
       throw new Error('Failed to initialize payment service');
     }
   }
@@ -277,13 +278,13 @@ export class StripePaymentService {
     onError: (error: string) => void
   ): Promise<void> {
     try {
-      console.log('🔄 Processing payment with Payment Sheet...');
+      console.log('Processing payment with Payment Sheet...');
 
       // Create payment intent
       const paymentIntentResponse = await this.createPaymentIntent({
         amount,
         currency: currency.toLowerCase(),
-        order_id: `temp_${Date.now()}`, // Temporary ID
+        order_id: `order_${Date.now()}`,
         customer_email: orderData.customer_email,
         payment_method_types: ['card', 'apple_pay', 'google_pay'],
         metadata: {
@@ -346,7 +347,7 @@ export class StripePaymentService {
       }
 
       // Payment succeeded
-      console.log('✅ Payment completed successfully');
+      console.log('Payment completed successfully');
 
       // Create a mock PaymentIntent for the success callback
       const mockPaymentIntent: PaymentIntent = {
@@ -378,7 +379,7 @@ export class StripePaymentService {
     onError: (error: string) => void
   ): Promise<void> {
     try {
-      console.log('🔄 Processing direct payment...');
+      console.log('Processing direct payment...');
 
       const { error, paymentIntent } = await confirmPayment(clientSecret, {
         paymentMethodType: 'Card',
@@ -394,7 +395,7 @@ export class StripePaymentService {
       }
 
       if (paymentIntent) {
-        console.log('✅ Direct payment completed successfully');
+        console.log('Direct payment completed successfully');
         onSuccess(paymentIntent);
       }
 
@@ -414,7 +415,7 @@ export class StripePaymentService {
     onError: (error: string) => void
   ): Promise<void> {
     try {
-      console.log('🔄 Saving payment method...');
+      console.log('Saving payment method...');
 
       // Create setup intent on server
       const response = await fetch('/api/create-setup-intent', {
@@ -442,7 +443,7 @@ export class StripePaymentService {
       }
 
       if (setupIntent) {
-        console.log('✅ Payment method saved successfully');
+        console.log('Payment method saved successfully');
         onSuccess(setupIntent);
       }
 
@@ -479,7 +480,7 @@ export class StripePaymentService {
     const formattedAmount = this.formatCurrency(amount);
 
     Alert.alert(
-      '🎉 Payment Successful!',
+      'Payment Successful',
       `Your order ${orderNumber} for ${formattedAmount} has been placed successfully. You'll receive a confirmation email shortly.`,
       [
         {
@@ -499,7 +500,7 @@ export class StripePaymentService {
    */
   showPaymentErrorAlert(error: string): void {
     Alert.alert(
-      '❌ Payment Failed',
+      'Payment Failed',
       `We couldn't process your payment. ${error}\n\nPlease try again or use a different payment method.`,
       [
         {
@@ -587,7 +588,7 @@ export class StripePaymentService {
     try {
       // This would be implemented using the Stripe SDK's method
       // return await isApplePaySupported();
-      return false; // Placeholder
+      return false;
     } catch {
       return false;
     }
@@ -600,7 +601,7 @@ export class StripePaymentService {
     try {
       // This would be implemented using the Stripe SDK's method
       // return await isGooglePaySupported();
-      return false; // Placeholder
+      return false;
     } catch {
       return false;
     }

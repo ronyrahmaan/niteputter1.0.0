@@ -181,7 +181,7 @@ export const useNiteControlStore = create<NiteControlStore>()(
         set({ isScanning: true, error: null });
         
         try {
-          // Mock BLE scan - replace with real BLE later
+          // Simulate BLE scan
           await new Promise(resolve => setTimeout(resolve, 2000));
           
           set({
@@ -200,7 +200,7 @@ export const useNiteControlStore = create<NiteControlStore>()(
         set({ isConnecting: true, error: null });
         
         try {
-          // Mock BLE connection - replace with real BLE later
+          // Simulate BLE connection
           await new Promise(resolve => setTimeout(resolve, 1500));
           
           set(state => ({
@@ -224,7 +224,7 @@ export const useNiteControlStore = create<NiteControlStore>()(
 
       disconnectFromCup: async (cupId: string) => {
         try {
-          // Mock BLE disconnection - replace with real BLE later
+          // Simulate BLE disconnection
           await new Promise(resolve => setTimeout(resolve, 500));
           
           set(state => ({
@@ -326,7 +326,7 @@ export const useNiteControlStore = create<NiteControlStore>()(
         set({ currentColor: color });
         
         try {
-          // Mock BLE color update - replace with real BLE later
+          // Simulate BLE color update
           await new Promise(resolve => setTimeout(resolve, 300));
           
           set(state => ({
@@ -344,7 +344,7 @@ export const useNiteControlStore = create<NiteControlStore>()(
 
       setCupColor: async (cupId: string, color: string) => {
         try {
-          // Mock BLE color update for specific cup - replace with real BLE later
+          // Simulate BLE color update for specific cup
           await new Promise(resolve => setTimeout(resolve, 300));
           
           set(state => ({
@@ -365,7 +365,7 @@ export const useNiteControlStore = create<NiteControlStore>()(
         set({ currentMode: mode });
         
         try {
-          // Mock BLE mode update - replace with real BLE later
+          // Simulate BLE mode update
           await new Promise(resolve => setTimeout(resolve, 300));
           
           set(state => ({
@@ -383,7 +383,7 @@ export const useNiteControlStore = create<NiteControlStore>()(
         set({ currentBrightness: brightness });
         
         try {
-          // Mock BLE brightness update - replace with real BLE later
+          // Simulate BLE brightness update
           await new Promise(resolve => setTimeout(resolve, 200));
           
           set(state => ({

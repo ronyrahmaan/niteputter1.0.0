@@ -174,7 +174,7 @@ export class EmailTemplates {
 <body>
   <div class="container">
     <div class="header">
-      <h1>🎮 ${companyName}</h1>
+      <h1>${companyName}</h1>
       <h2>Order Confirmation</h2>
       <p>Thank you for your order, ${customerName}!</p>
     </div>
@@ -215,7 +215,7 @@ export class EmailTemplates {
       </div>
 
       <div class="address-section">
-        <h3>📍 Shipping Address</h3>
+        <h3>Shipping Address</h3>
         <div class="address">
           ${order.shipping_first_name} ${order.shipping_last_name}<br>
           ${order.shipping_street_line1}<br>
@@ -262,21 +262,21 @@ export class EmailTemplates {
     const items = order.items || [];
 
     return `
-🎮 ${companyName} - Order Confirmation
+${companyName} - Order Confirmation
 
 Hi ${customerName},
 
 Thank you for your order! Here are the details:
 
-📦 ORDER DETAILS
+ORDER DETAILS
 Order Number: ${order.order_number}
 Order Date: ${orderDate}
 Total: $${orderTotal}
 
-🛍️ ITEMS ORDERED:
+ITEMS ORDERED:
 ${items.map(item => `• ${item.product_name} (Qty: ${item.quantity}) - $${(item.price * item.quantity / 100).toFixed(2)}`).join('\n')}
 
-📍 SHIPPING ADDRESS:
+SHIPPING ADDRESS
 ${order.shipping_first_name} ${order.shipping_last_name}
 ${order.shipping_street_line1}
 ${order.shipping_street_line2 ? `${order.shipping_street_line2}\n` : ''}${order.shipping_city}, ${order.shipping_state_province} ${order.shipping_postal_code}
@@ -336,9 +336,9 @@ ${companyName} Team
 <body>
   <div class="container">
     <div class="header">
-      <h1>🎮 ${companyName}</h1>
-      <h2>📦 Your Order Has Shipped!</h2>
-      <p>Great news, ${customerName}! Your package is on its way.</p>
+      <h1>${companyName}</h1>
+      <h2>Your Order Has Shipped!</h2>
+      <p>Your order has been shipped, ${customerName}. Your package is on its way.</p>
     </div>
 
     <div class="content">
@@ -347,7 +347,7 @@ ${companyName} Team
       </p>
 
       <div class="tracking-box">
-        <h3>📍 Track Your Package</h3>
+        <h3>Track Your Package</h3>
         <div class="tracking-info">
           <div class="tracking-row">
             <span class="tracking-label">Carrier:</span>
@@ -360,13 +360,13 @@ ${companyName} Team
         </div>
         ${trackingInfo?.trackingUrl ? `
           <a href="${trackingInfo.trackingUrl}" class="track-button">
-            🚚 Track Your Package
+            Track Your Package
           </a>
         ` : ''}
       </div>
 
       <div class="address-section">
-        <h3>📍 Shipping To</h3>
+        <h3>Shipping To</h3>
         <div style="line-height: 1.8; color: #495057;">
           ${order.shipping_first_name} ${order.shipping_last_name}<br>
           ${order.shipping_street_line1}<br>
@@ -399,18 +399,18 @@ ${companyName} Team
     const { order, customerName, trackingInfo } = data;
 
     return `
-🎮 ${companyName} - Your Order Has Shipped!
+${companyName} - Your Order Has Shipped!
 
 Hi ${customerName},
 
-📦 Great news! Your order ${order.order_number} has been shipped and is on its way to you!
+Your order ${order.order_number} has been shipped and is on its way to you.
 
-📍 TRACKING INFORMATION:
+TRACKING INFORMATION:
 Carrier: ${trackingInfo?.carrier || 'Standard Shipping'}
 Tracking Number: ${trackingInfo?.trackingNumber}
 ${trackingInfo?.trackingUrl ? `Track at: ${trackingInfo.trackingUrl}` : ''}
 
-📍 SHIPPING TO:
+SHIPPING TO:
 ${order.shipping_first_name} ${order.shipping_last_name}
 ${order.shipping_street_line1}
 ${order.shipping_street_line2 ? `${order.shipping_street_line2}\n` : ''}${order.shipping_city}, ${order.shipping_state_province} ${order.shipping_postal_code}
@@ -457,13 +457,13 @@ ${companyName} Team
 <body>
   <div class="container">
     <div class="header">
-      <h1>🎮 ${companyName}</h1>
-      <h2>✅ Delivered Successfully!</h2>
+      <h1>${companyName}</h1>
+      <h2>Delivered Successfully!</h2>
       <p>Your order has arrived, ${customerName}!</p>
     </div>
 
     <div class="content">
-      <div class="success-icon">🎉</div>
+      <div class="success-icon">✓</div>
 
       <div class="success-box">
         <h3 style="font-size: 24px; margin-bottom: 16px;">Order Delivered!</h3>
@@ -476,7 +476,7 @@ ${companyName} Team
       </p>
 
       <a href="${websiteUrl}/review?order=${order.order_number}" class="review-button">
-        ⭐ Leave a Review
+        Leave a Review
       </a>
 
       <p style="margin-top: 32px; font-size: 16px;">
@@ -502,11 +502,11 @@ ${companyName} Team
     const { order, customerName } = data;
 
     return `
-🎮 ${companyName} - Order Delivered!
+${companyName} - Order Delivered!
 
 Hi ${customerName},
 
-🎉 Great news! Your order ${order.order_number} has been successfully delivered!
+Your order ${order.order_number} has been successfully delivered.
 
 We hope you love your ${companyName} products! If you have any issues with your order, please don't hesitate to reach out to our support team.
 
@@ -550,7 +550,7 @@ ${companyName} Team
 <body>
   <div class="container">
     <div class="header">
-      <h1>🎮 ${companyName}</h1>
+      <h1>${companyName}</h1>
       <h2>Order Cancelled</h2>
       <p>Hi ${customerName}</p>
     </div>
@@ -592,7 +592,7 @@ ${companyName} Team
     const { order, customerName, orderTotal } = data;
 
     return `
-🎮 ${companyName} - Order Cancelled
+${companyName} - Order Cancelled
 
 Hi ${customerName},
 
@@ -644,8 +644,8 @@ ${companyName} Team
 <body>
   <div class="container">
     <div class="header">
-      <h1>🎮 ${companyName}</h1>
-      <h2>⚠️ Payment Failed</h2>
+      <h1>${companyName}</h1>
+      <h2>Payment Failed</h2>
       <p>Hi ${customerName}</p>
     </div>
 
@@ -668,7 +668,7 @@ ${companyName} Team
       </ul>
 
       <a href="${websiteUrl}/retry-payment?order=${order.order_number}" class="retry-button">
-        💳 Retry Payment
+        Retry Payment
       </a>
 
       <p style="margin-top: 24px;">
@@ -694,11 +694,11 @@ ${companyName} Team
     const { order, customerName, orderTotal } = data;
 
     return `
-🎮 ${companyName} - Payment Failed
+${companyName} - Payment Failed
 
 Hi ${customerName},
 
-⚠️ We were unable to process your payment for order ${order.order_number} ($${orderTotal}).
+We were unable to process your payment for order ${order.order_number} ($${orderTotal}).
 
 Don't worry! Your order is still reserved for a limited time. You can try again with:
 • A different payment method
@@ -743,14 +743,14 @@ ${companyName} Team
 <body>
   <div class="container">
     <div class="header">
-      <h1>🎮 ${companyName}</h1>
-      <h2>💰 Refund Processed</h2>
+      <h1>${companyName}</h1>
+      <h2>Refund Processed</h2>
       <p>Hi ${customerName}</p>
     </div>
 
     <div class="content">
       <div class="success-box">
-        <h3 style="margin-bottom: 16px;">✅ Refund Successfully Processed</h3>
+        <h3 style="margin-bottom: 16px;">Refund Successfully Processed</h3>
         <p><strong>Order Number:</strong> ${order.order_number}</p>
         <p><strong>Refund Amount:</strong> $${refundAmount}</p>
       </div>
@@ -782,11 +782,11 @@ ${companyName} Team
     const { order, customerName, refundAmount } = data;
 
     return `
-🎮 ${companyName} - Refund Processed
+${companyName} - Refund Processed
 
 Hi ${customerName},
 
-✅ Your refund has been successfully processed!
+Your refund has been successfully processed!
 
 Order Number: ${order.order_number}
 Refund Amount: $${refundAmount}

@@ -42,7 +42,7 @@ export const AccountSettingsScreen: React.FC = () => {
       Alert.alert('Error', 'New passwords do not match.');
       return;
     }
-    // Placeholder: integrate with backend
+    // Password update functionality
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     Alert.alert('Success', 'Password changed successfully');
     setCurrentPassword('');

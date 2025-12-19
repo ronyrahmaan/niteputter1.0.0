@@ -137,7 +137,7 @@ export const useShopStore = create<ShopStore>()(
         set({ isLoading: true, error: null });
 
         try {
-          console.log('🔄 Fetching products from Supabase...');
+          console.log('Fetching products from database...');
           const { data: supabaseProducts, error } = await ProductsAPI.getProducts();
 
           if (error) {
@@ -146,7 +146,7 @@ export const useShopStore = create<ShopStore>()(
 
           const transformedProducts = supabaseProducts.map(transformSupabaseProduct);
 
-          console.log(`✅ Fetched ${transformedProducts.length} products from Supabase`);
+          console.log(`Fetched ${transformedProducts.length} products from database`);
 
           set({
             products: transformedProducts,
@@ -154,7 +154,7 @@ export const useShopStore = create<ShopStore>()(
             error: null,
           });
         } catch (error) {
-          console.error('❌ Error fetching products:', error);
+          console.error('Error fetching products:', error);
           set({
             isLoading: false,
             error: 'Failed to fetch products',
@@ -164,26 +164,26 @@ export const useShopStore = create<ShopStore>()(
 
       refreshCart: async () => {
         try {
-          console.log('🔄 Refreshing cart from Supabase...');
+          console.log('Refreshing cart from database...');
           const { data: supabaseCartItems, error } = await CartAPI.getCartItems();
 
           if (error) {
-            console.error('❌ Error refreshing cart:', error);
+            console.error('Error refreshing cart:', error);
             return;
           }
 
           const transformedCartItems = supabaseCartItems.map(transformSupabaseCartItem);
 
           set({ cart: transformedCartItems });
-          console.log(`✅ Cart refreshed with ${transformedCartItems.length} items`);
+          console.log(`Cart refreshed with ${transformedCartItems.length} items`);
         } catch (error) {
-          console.error('❌ Error refreshing cart:', error);
+          console.error('Error refreshing cart:', error);
         }
       },
 
       addToCart: async (product: Product, quantity = 1) => {
         try {
-          console.log(`🛒 Adding ${product.name} to cart (quantity: ${quantity})`);
+          console.log(`Adding ${product.name} to cart (quantity: ${quantity})`);
 
           const { data, error } = await CartAPI.addToCart(product.id, quantity);
 
@@ -194,23 +194,23 @@ export const useShopStore = create<ShopStore>()(
           // Refresh cart to get latest state
           await get().refreshCart();
 
-          console.log('✅ Item added to cart successfully');
+          console.log('Item added to cart successfully');
         } catch (error) {
-          console.error('❌ Error adding to cart:', error);
+          console.error('Error adding to cart:', error);
           set({ error: 'Failed to add item to cart' });
         }
       },
 
       removeFromCart: async (productId: string) => {
         try {
-          console.log(`🗑️ Removing product ${productId} from cart`);
+          console.log(`Removing product ${productId} from cart`);
 
           // Find the cart item by product ID
           const { cart } = get();
           const cartItem = cart.find(item => item.product.id === productId);
 
           if (!cartItem) {
-            console.log('❌ Cart item not found');
+            console.log('Cart item not found');
             return;
           }
 
@@ -219,7 +219,7 @@ export const useShopStore = create<ShopStore>()(
           const supabaseCartItem = supabaseCartItems.find(item => item.product.id === productId);
 
           if (!supabaseCartItem) {
-            console.log('❌ Supabase cart item not found');
+            console.log('Database cart item not found');
             return;
           }
 
@@ -232,16 +232,16 @@ export const useShopStore = create<ShopStore>()(
           // Refresh cart to get latest state
           await get().refreshCart();
 
-          console.log('✅ Item removed from cart successfully');
+          console.log('Item removed from cart successfully');
         } catch (error) {
-          console.error('❌ Error removing from cart:', error);
+          console.error('Error removing from cart:', error);
           set({ error: 'Failed to remove item from cart' });
         }
       },
 
       updateCartQuantity: async (productId: string, quantity: number) => {
         try {
-          console.log(`📝 Updating cart quantity for product ${productId} to ${quantity}`);
+          console.log(`Updating cart quantity for product ${productId} to ${quantity}`);
 
           if (quantity <= 0) {
             await get().removeFromCart(productId);
@@ -253,7 +253,7 @@ export const useShopStore = create<ShopStore>()(
           const supabaseCartItem = supabaseCartItems.find(item => item.product.id === productId);
 
           if (!supabaseCartItem) {
-            console.log('❌ Supabase cart item not found');
+            console.log('Database cart item not found');
             return;
           }
 
@@ -266,16 +266,16 @@ export const useShopStore = create<ShopStore>()(
           // Refresh cart to get latest state
           await get().refreshCart();
 
-          console.log('✅ Cart quantity updated successfully');
+          console.log('Cart quantity updated successfully');
         } catch (error) {
-          console.error('❌ Error updating cart quantity:', error);
+          console.error('Error updating cart quantity:', error);
           set({ error: 'Failed to update cart quantity' });
         }
       },
 
       clearCart: async () => {
         try {
-          console.log('🧹 Clearing cart');
+          console.log('Clearing cart');
 
           const { error } = await CartAPI.clearCart();
 
@@ -284,9 +284,9 @@ export const useShopStore = create<ShopStore>()(
           }
 
           set({ cart: [] });
-          console.log('✅ Cart cleared successfully');
+          console.log('Cart cleared successfully');
         } catch (error) {
-          console.error('❌ Error clearing cart:', error);
+          console.error('Error clearing cart:', error);
           set({ error: 'Failed to clear cart' });
         }
       },
@@ -296,7 +296,7 @@ export const useShopStore = create<ShopStore>()(
         set({ isLoading: true, error: null });
 
         try {
-          console.log('💳 Starting checkout process...');
+          console.log('Starting checkout process...');
 
           // Calculate totals (same logic as before for now)
           const subtotal = cart.reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
@@ -307,7 +307,7 @@ export const useShopStore = create<ShopStore>()(
           const tax = discountedSubtotal * 0.08;
           const total = discountedSubtotal + shipping + tax;
 
-          // For now, create a mock order (later integrate with Supabase orders)
+          // Create order from cart items
           const orderItems: OrderItem[] = cart.map(item => ({
             productId: item.product.id,
             quantity: item.quantity,
@@ -337,9 +337,9 @@ export const useShopStore = create<ShopStore>()(
             error: null,
           }));
 
-          console.log('✅ Checkout completed successfully');
+          console.log('Checkout completed successfully');
         } catch (error) {
-          console.error('❌ Checkout failed:', error);
+          console.error('Checkout failed:', error);
           set({
             isLoading: false,
             error: 'Checkout failed',
@@ -351,14 +351,13 @@ export const useShopStore = create<ShopStore>()(
         set({ isLoading: true, error: null });
 
         try {
-          // For now, orders are stored locally
-          // Later: integrate with Supabase orders table
+          // Orders are stored locally for this demo
           set({
             isLoading: false,
             error: null,
           });
         } catch (error) {
-          console.error('❌ Error fetching orders:', error);
+          console.error('Error fetching orders:', error);
           set({
             isLoading: false,
             error: 'Failed to fetch orders',

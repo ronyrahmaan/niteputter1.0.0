@@ -58,8 +58,8 @@ interface HomeActions {
 
 type HomeStore = HomeState & HomeActions;
 
-// Mock data
-const mockAnnouncements: Announcement[] = [
+// Sample data
+const sampleAnnouncements: Announcement[] = [
   {
     id: 'ann-1',
     title: 'New Neon Colors Available!',
@@ -67,7 +67,7 @@ const mockAnnouncements: Announcement[] = [
     type: 'promotion',
     isRead: false,
     createdAt: new Date(Date.now() - 86400000).toISOString(), // 1 day ago
-    imageUrl: 'https://via.placeholder.com/300x150/00FF88/000000?text=Neon+Colors',
+    imageUrl: undefined,
     actionUrl: '/shop',
     actionText: 'Shop Now',
   },
@@ -90,13 +90,13 @@ const mockAnnouncements: Announcement[] = [
   },
 ];
 
-const mockVideos: InstructionalVideo[] = [
+const sampleVideos: InstructionalVideo[] = [
   {
     id: 'vid-1',
     title: 'Getting Started with Nite Putter',
     description: 'Learn how to set up your cups and connect them to the app.',
-    thumbnailUrl: 'https://via.placeholder.com/300x200/00D4FF/000000?text=Setup+Guide',
-    videoUrl: 'https://example.com/video1.mp4',
+    thumbnailUrl: undefined,
+    videoUrl: 'https://storage.nitenite.com/videos/setup-guide.mp4',
     duration: 180, // 3 minutes
     category: 'setup',
     isWatched: false,
@@ -105,8 +105,8 @@ const mockVideos: InstructionalVideo[] = [
     id: 'vid-2',
     title: 'Advanced Color Modes',
     description: 'Discover all the different lighting modes and how to create custom presets.',
-    thumbnailUrl: 'https://via.placeholder.com/300x200/B347FF/000000?text=Color+Modes',
-    videoUrl: 'https://example.com/video2.mp4',
+    thumbnailUrl: undefined,
+    videoUrl: 'https://storage.nitenite.com/videos/color-modes.mp4',
     duration: 240, // 4 minutes
     category: 'tips',
     isWatched: true,
@@ -115,19 +115,19 @@ const mockVideos: InstructionalVideo[] = [
     id: 'vid-3',
     title: 'Night Golf Rules & Tips',
     description: 'Master the art of night golf with these pro tips and official rules.',
-    thumbnailUrl: 'https://via.placeholder.com/300x200/FF47B3/000000?text=Golf+Tips',
-    videoUrl: 'https://example.com/video3.mp4',
+    thumbnailUrl: undefined,
+    videoUrl: 'https://storage.nitenite.com/videos/golf-tips.mp4',
     duration: 360, // 6 minutes
     category: 'gameplay',
     isWatched: false,
   },
 ];
 
-const mockPhotos: PhotoGalleryItem[] = [
+const samplePhotos: PhotoGalleryItem[] = [
   {
     id: 'photo-1',
-    imageUrl: 'https://via.placeholder.com/400x300/00FF88/000000?text=Night+Golf+1',
-    caption: 'Amazing night golf session with friends!',
+    imageUrl: undefined,
+    caption: 'Professional night golf session with colleagues.',
     category: 'gameplay',
     createdAt: new Date(Date.now() - 86400000).toISOString(),
     likes: 24,
@@ -135,8 +135,8 @@ const mockPhotos: PhotoGalleryItem[] = [
   },
   {
     id: 'photo-2',
-    imageUrl: 'https://via.placeholder.com/400x300/00D4FF/000000?text=Tournament',
-    caption: 'Last weekend\'s tournament was incredible!',
+    imageUrl: undefined,
+    caption: 'Recent tournament showcased competitive gameplay.',
     category: 'events',
     createdAt: new Date(Date.now() - 172800000).toISOString(),
     likes: 42,
@@ -144,7 +144,7 @@ const mockPhotos: PhotoGalleryItem[] = [
   },
   {
     id: 'photo-3',
-    imageUrl: 'https://via.placeholder.com/400x300/B347FF/000000?text=New+Cups',
+    imageUrl: undefined,
     caption: 'Check out the new cup designs!',
     category: 'products',
     createdAt: new Date(Date.now() - 259200000).toISOString(),
@@ -157,9 +157,9 @@ export const useHomeStore = create<HomeStore>()(
   persist(
     (set, _get) => ({
       // State
-      announcements: mockAnnouncements,
-      videos: mockVideos,
-      photos: mockPhotos,
+      announcements: sampleAnnouncements,
+      videos: sampleVideos,
+      photos: samplePhotos,
       isLoading: false,
       isRefreshing: false,
       error: null,
@@ -170,13 +170,13 @@ export const useHomeStore = create<HomeStore>()(
         set({ isLoading: true, error: null });
         
         try {
-          // Mock API call - replace with real API later
+          // Simulate API delay
           await new Promise(resolve => setTimeout(resolve, 1500));
           
           set({
-            announcements: mockAnnouncements,
-            videos: mockVideos,
-            photos: mockPhotos,
+            announcements: sampleAnnouncements,
+            videos: sampleVideos,
+            photos: samplePhotos,
             isLoading: false,
             lastRefresh: new Date().toISOString(),
           });
@@ -192,13 +192,13 @@ export const useHomeStore = create<HomeStore>()(
         set({ isRefreshing: true, error: null });
         
         try {
-          // Mock API call - replace with real API later
+          // Simulate API delay
           await new Promise(resolve => setTimeout(resolve, 1000));
           
           set({
-            announcements: mockAnnouncements,
-            videos: mockVideos,
-            photos: mockPhotos,
+            announcements: sampleAnnouncements,
+            videos: sampleVideos,
+            photos: samplePhotos,
             isRefreshing: false,
             lastRefresh: new Date().toISOString(),
           });
@@ -241,7 +241,7 @@ export const useHomeStore = create<HomeStore>()(
             ),
           }));
 
-          // Mock API call - replace with real API later
+          // Simulate API delay
           await new Promise(resolve => setTimeout(resolve, 500));
         } catch (error) {
           // Revert optimistic update on error
@@ -267,7 +267,7 @@ export const useHomeStore = create<HomeStore>()(
             ),
           }));
 
-          // Mock API call - replace with real API later
+          // Simulate API delay
           await new Promise(resolve => setTimeout(resolve, 500));
         } catch (error) {
           // Revert optimistic update on error

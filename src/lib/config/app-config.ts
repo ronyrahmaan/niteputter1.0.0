@@ -367,7 +367,7 @@ export class ConfigUtils {
 
 // Development helper to log configuration (only in development)
 if (ConfigUtils.isDevelopment()) {
-  console.log('🔧 App Configuration Loaded:', {
+  console.log('App Configuration Loaded:', {
     environment: appConfig.app.environment,
     version: ConfigUtils.getVersionInfo(),
     features: Object.entries(appConfig.features)

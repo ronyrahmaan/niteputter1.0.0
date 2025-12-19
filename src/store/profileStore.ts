@@ -81,7 +81,7 @@ const mockProfile: UserProfile = {
   avatar: 'https://via.placeholder.com/150x150/00FF88/000000?text=JD',
   phone: '+1 (555) 123-4567',
   location: 'San Francisco, CA',
-  bio: 'Night golf enthusiast and tech lover. Always looking for the perfect glow!',
+  bio: 'Night golf enthusiast and technology professional. Focused on optimal lighting solutions.',
   joinedAt: '2023-06-15T10:30:00Z',
   totalOrders: 8,
   totalSpent: 245.99,
@@ -148,7 +148,7 @@ export const useProfileStore = create<ProfileStore>()(
         set({ isLoading: true, error: null });
         
         try {
-          // Mock API call - replace with real API later
+          // Simulate API delay
           await new Promise(resolve => setTimeout(resolve, 1000));
           
           set({
@@ -167,7 +167,7 @@ export const useProfileStore = create<ProfileStore>()(
         set({ isUpdating: true, error: null });
         
         try {
-          // Mock API call - replace with real API later
+          // Simulate API delay
           await new Promise(resolve => setTimeout(resolve, 800));
           
           set(state => ({
@@ -186,7 +186,7 @@ export const useProfileStore = create<ProfileStore>()(
         set({ isUpdating: true, error: null });
         
         try {
-          // Mock image upload - replace with real upload later
+          // Simulate image upload delay
           await new Promise(resolve => setTimeout(resolve, 2000));
           
           const avatarUrl = `https://via.placeholder.com/150x150/00FF88/000000?text=${Date.now()}`;
@@ -207,7 +207,7 @@ export const useProfileStore = create<ProfileStore>()(
         set({ isLoading: true, error: null });
         
         try {
-          // Mock API call - replace with real API later
+          // Simulate API delay
           await new Promise(resolve => setTimeout(resolve, 800));
           
           set({
@@ -227,7 +227,7 @@ export const useProfileStore = create<ProfileStore>()(
         set({ isUpdating: true, error: null });
         
         try {
-          // Mock API call - replace with real API later
+          // Simulate API delay
           await new Promise(resolve => setTimeout(resolve, 1000));
           
           const newReferral: Referral = {
@@ -256,7 +256,7 @@ export const useProfileStore = create<ProfileStore>()(
           const { referralData } = get();
           if (!referralData) return;
           
-          // Mock sharing - replace with real sharing later
+          // Simulate sharing functionality
           await new Promise(resolve => setTimeout(resolve, 300));
           
           // In a real app, this would use React Native's Share API

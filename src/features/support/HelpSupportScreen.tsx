@@ -80,7 +80,7 @@ export const HelpSupportScreen: React.FC = () => {
 
             {/* General Inquiries */}
             <View style={styles.section}>
-              <Text style={styles.sectionTitle}>📧 General Inquiries</Text>
+              <Text style={styles.sectionTitle}>General Inquiries</Text>
               <View style={styles.contactRow}>
                 <Ionicons name="call" size={18} color={theme.colors.neon.green} />
                 <Text
@@ -106,7 +106,7 @@ export const HelpSupportScreen: React.FC = () => {
 
             {/* Bucky Thrash */}
             <View style={styles.section}>
-              <Text style={styles.sectionTitle}>👨‍💼 Bucky Thrash</Text>
+              <Text style={styles.sectionTitle}>Bucky Thrash</Text>
               <Text style={styles.description}>Co-Founder & CEO — Direct business inquiries</Text>
               <View style={styles.contactRow}>
                 <Ionicons name="mail" size={18} color={theme.colors.neon.blue} />
@@ -122,7 +122,7 @@ export const HelpSupportScreen: React.FC = () => {
 
             {/* Dusty Thrash */}
             <View style={styles.section}>
-              <Text style={styles.sectionTitle}>🔧 Dusty Thrash</Text>
+              <Text style={styles.sectionTitle}>Dusty Thrash</Text>
               <Text style={styles.description}>Co-Founder & Operations — Technical & installation support</Text>
               <View style={styles.contactRow}>
                 <Ionicons name="mail" size={18} color={theme.colors.neon.blue} />
@@ -138,7 +138,7 @@ export const HelpSupportScreen: React.FC = () => {
 
             {/* Headquarters */}
             <View style={styles.section}>
-              <Text style={styles.sectionTitle}>🏢 Texas Headquarters</Text>
+              <Text style={styles.sectionTitle}>Texas Headquarters</Text>
               <Text style={styles.description}>Veteran-owned operations</Text>
               <Text style={styles.description}>312 E Main St, Forney, TX 75126, United States</Text>
               <View style={styles.contactRow}>

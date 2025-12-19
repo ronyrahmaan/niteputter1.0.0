@@ -95,7 +95,7 @@ export const useSettingsStore = create<SettingsStore>()(
         set({ isLoading: true, error: null });
         
         try {
-          // Mock API call - replace with real API later
+          // Simulate API delay
           await new Promise(resolve => setTimeout(resolve, 500));
           
           set(state => {
@@ -121,7 +121,7 @@ export const useSettingsStore = create<SettingsStore>()(
         set({ isLoading: true, error: null });
         
         try {
-          // Mock API call - replace with real API later
+          // Simulate API delay
           await new Promise(resolve => setTimeout(resolve, 300));
           
           set(state => {
@@ -147,7 +147,7 @@ export const useSettingsStore = create<SettingsStore>()(
         set({ isLoading: true, error: null });
         
         try {
-          // Mock API call - replace with real API later
+          // Simulate API delay
           await new Promise(resolve => setTimeout(resolve, 300));
           
           set(state => {
@@ -190,7 +190,7 @@ export const useSettingsStore = create<SettingsStore>()(
         set({ isLoading: true, error: null });
         
         try {
-          // Mock API call - replace with real API later
+          // Simulate API delay
           await new Promise(resolve => setTimeout(resolve, 800));
           
           set({

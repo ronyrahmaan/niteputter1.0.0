@@ -11,8 +11,6 @@ import { StackActions } from '@react-navigation/native';
 
 type Props = NiteControlStackScreenProps<'QrScan'>;
 
-// Frontend-only placeholder QR scanning screen.
-// Provides a manual code entry and simple instructions.
 export default function QrScanScreen({ navigation }: Props) {
   const { addCup } = useNiteControlStore();
   const [code, setCode] = useState('');

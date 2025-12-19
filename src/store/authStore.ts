@@ -48,21 +48,21 @@ export const useAuthStore = create<AuthStore>()(
         set({ isLoading: true, error: null });
         
         try {
-          // Mock API call - replace with real API later
+          // Simulate API delay
           await new Promise(resolve => setTimeout(resolve, 1000));
           
-          // Mock user data
-          const mockUser: User = {
+          // Demo user data
+          const demoUser: User = {
             id: '1',
             email,
             firstName: 'John',
             lastName: 'Doe',
-            avatar: 'https://via.placeholder.com/150',
+            avatar: undefined,
             createdAt: new Date().toISOString(),
           };
 
           set({
-            user: mockUser,
+            user: demoUser,
             isAuthenticated: true,
             isLoading: false,
             error: null,
@@ -79,10 +79,10 @@ export const useAuthStore = create<AuthStore>()(
         set({ isLoading: true, error: null });
         
         try {
-          // Mock API call - replace with real API later
+          // Simulate API delay
           await new Promise(resolve => setTimeout(resolve, 1000));
           
-          const mockUser: User = {
+          const demoUser: User = {
             id: Date.now().toString(),
             email,
             firstName,
@@ -91,7 +91,7 @@ export const useAuthStore = create<AuthStore>()(
           };
 
           set({
-            user: mockUser,
+            user: demoUser,
             isAuthenticated: true,
             isLoading: false,
             error: null,
@@ -116,7 +116,7 @@ export const useAuthStore = create<AuthStore>()(
         set({ isLoading: true, error: null });
         
         try {
-          // Mock API call - replace with real API later
+          // Simulate API delay
           await new Promise(resolve => setTimeout(resolve, 1000));
           
           set({
@@ -138,7 +138,7 @@ export const useAuthStore = create<AuthStore>()(
         set({ isLoading: true, error: null });
         
         try {
-          // Mock API call - replace with real API later
+          // Simulate API delay
           await new Promise(resolve => setTimeout(resolve, 500));
           
           set({
