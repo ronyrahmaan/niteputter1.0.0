@@ -322,24 +322,6 @@ expo build:android --release-channel production
 - [TypeScript Handbook](https://www.typescriptlang.org/docs/)
 - [Zustand Documentation](https://github.com/pmndrs/zustand)
 
-### Communication
-- **Issues**: Use GitHub issues for bug reports and feature requests
-- **Discussions**: Use GitHub discussions for questions and ideas
-- **Email**: support@niteputter.com for external inquiries
-
-### Code of Conduct
-- Be respectful and inclusive
-- Provide constructive feedback
-- Focus on the code, not the person
-- Help others learn and grow
-
 ## License
 
 Proprietary software. All rights reserved.
-
-## Support
-
-For technical support and inquiries:
-- Email: support@niteputter.com
-- Documentation: [Internal Wiki]
-- Issue Tracking: [Project Management System]
