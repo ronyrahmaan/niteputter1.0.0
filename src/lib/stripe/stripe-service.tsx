@@ -35,7 +35,7 @@ import { Alert } from 'react-native';
 // ============================================================================
 
 // Get from environment or config
-const STRIPE_PUBLISHABLE_KEY = 'pk_test_51RvWPRLWycZ0vXRC2QQ6JrF2nkHJHc3Ob76ibmlGV0jkXW5Q96iwNf1giKzI6w6BLwLuxXQApM5u9RoLzGrGO0jl00tK9fecdH';
+const STRIPE_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY || '';
 
 // Payment method configurations
 const PAYMENT_METHODS_CONFIG = {

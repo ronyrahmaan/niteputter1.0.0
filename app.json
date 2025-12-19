@@ -16,7 +16,13 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.niteputterapp.main",
+      "buildNumber": "1",
+      "infoPlist": {
+        "NSCameraUsageDescription": "This app uses camera to scan QR codes for LED cup connection",
+        "NSLocationWhenInUseUsageDescription": "This app uses location for golf course features"
+      }
     },
     "android": {
       "adaptiveIcon": {
