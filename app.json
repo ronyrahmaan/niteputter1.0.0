@@ -21,7 +21,8 @@
       "buildNumber": "1",
       "infoPlist": {
         "NSCameraUsageDescription": "This app uses camera to scan QR codes for LED cup connection",
-        "NSLocationWhenInUseUsageDescription": "This app uses location for golf course features"
+        "NSLocationWhenInUseUsageDescription": "This app uses location for golf course features",
+        "ITSAppUsesNonExemptEncryption": false
       }
     },
     "android": {
@@ -30,13 +31,22 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "android.permission.CAMERA"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
       "expo-barcode-scanner"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "bdc21c6f-665d-48b4-8b31-b6184da4fe69"
+      }
+    },
+    "owner": "mdarahman"
   }
 }
